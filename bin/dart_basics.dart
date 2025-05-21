@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  estudioListas();
+  estudioSets();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -109,6 +109,68 @@ void estudioListas() {
   print(nombres); // [Miguel, Linux, Tux]
   nombres[2] = 'Unix'; // Cambiar valor en índice 2 por 'Unix'
   print(nombres); // [Miguel, Linux, Unix]
+}
+
+void estudioSets() {
+
+  Set<String> emails = {'linux@mail.com', 'daniel@mail.com', 'steve@mail.com'}; // Crear Set
+  print(emails); // {linux@mail.com, daniel@mail.com, steve@mail.com}
+
+  // ... usar el constructor:
+  Set<int> numeros = Set();
+  numeros.add(1); // Agrega un elemento al Set. Si ya existe, no lo añade
+  numeros.add(2);
+  numeros.add(3);
+  print(numeros); // {1, 2, 3}
+
+  emails.addAll({'juan@mail.com', 'bill@mail.com'}); // Agrega múltiples elementos de otra colección
+  print(emails); // {linux@mail.com, daniel@mail.com, steve@mail.com, juan@mail.com, bill@mail.com}
+
+  emails.remove('linux@mail.com'); // Elimina un elemento del Set
+  print(emails); // {daniel@mail.com, steve@mail.com, juan@mail.com, bill@mail.com}
+
+  print(emails.contains('juan@mail.com')); // Devuelve true si el Set contiene el elemento -> true
+  print(emails.contains('richard@mail.com')); // false 
+
+  print(emails.length); // Retorna la cantidad de elementos -> 4
+
+  // -> Verificar si un Set está vacío o no:
+  print(emails.isEmpty); // false
+  print(emails.isNotEmpty); // true
+
+  emails.clear(); // Elimina todos los elementos
+  print(emails); // {}
+
+  emails.addAll({'linux@mail.com', 'daniel@mail.com', 'steve@mail.com'}); // Agregar varios elementos al Set
+  emails.removeAll({'daniel@mail.com', 'steve@mail.com'}); // Elimina varios elementos del Set
+  print(emails); // {linux@mail.com}
+
+  // -> Conversiones: Set <---> List
+  // * Conversión List ---> Set:
+  List<String> newEmailList = ['user1@mail.com', 'user2@mail.com', 'user3@mail.com'];
+  print(newEmailList); // [user1@mail.com, user2@mail.com, user3@mail.com]
+  Set<String> newEmailSet = Set.from(newEmailList);
+  print(newEmailSet); // {user1@mail.com, user2@mail.com, user3@mail.com}
+
+  // * Conversión Set ---> List: 
+  Set<int> newNumbersSet = {1, 2, 3, 4, 5};
+  print(newNumbersSet); // {1, 2, 3, 4, 5}
+  List<int> newNumbersList = newNumbersSet.toList();
+  print(newNumbersList); // [1, 2, 3, 4, 5]
+
+
+  // -> Operaciones entre Sets
+  Set<int> a = {1, 2, 3};
+  Set<int> b = {3, 4, 5};
+
+  // Devuelve un nuevo Set que contiene todos los elementos de a y de b, sin duplicados:
+  print(a.union(b)); // {1, 2, 3, 4, 5}
+
+  // Devuelve un nuevo Set con los elementos que están en ambos sets:
+  print(a.intersection(b)); // {3}
+
+  // Devuelve un nuevo Set con los elementos que están en a pero no en b:
+  print(a.difference(b)); // {1, 2}
 }
 
 
