@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  estudioSets();
+  estudioMaps();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -112,7 +112,6 @@ void estudioListas() {
 }
 
 void estudioSets() {
-
   Set<String> emails = {'linux@mail.com', 'daniel@mail.com', 'steve@mail.com'}; // Crear Set
   print(emails); // {linux@mail.com, daniel@mail.com, steve@mail.com}
 
@@ -173,6 +172,52 @@ void estudioSets() {
   print(a.difference(b)); // {1, 2}
 }
 
+void estudioMaps() {
+  // Creación de Map:
+  Map<String, String> paises = {
+    'CO':'Colombia',
+    'MX':'México',
+    'PE':'Perú'
+  };
+
+  print(paises); // {CO: Colombia, MX: México, PE: Perú}
+
+  // -> Constructor:
+  Map<int, String> usuarios = Map();
+  usuarios[1] = 'Daniel'; // 	Asigna un valor a una clave.
+  usuarios[2] = 'Linux';
+  usuarios[3] = 'Steve';
+  print(usuarios); // {1: Daniel, 2: Linux, 3: Steve}
+  print(usuarios[2]); // Accede al valor mediante su clave -> Linux
+
+  usuarios.addAll({4: 'Juan', 5: 'Max', 6: 'Orlando'}); // Agrega múltiples pares claves-valor de otro Map
+  print(usuarios); // {1: Daniel, 2: Linux, 3: Steve, 4: Juan, 5: Max, 6: Orlando}
+
+  usuarios.remove(1); // Elimina el par clave-valor según la clave
+  print(usuarios); // {2: Linux, 3: Steve, 4: Juan, 5: Max, 6: Orlando}
+
+  print(usuarios.containsKey(5)); // Retorna true si la clave existe -> true
+  print(usuarios.containsKey(10)); // false
+
+  print(usuarios.containsValue('Linux')); // Retorna true si el valor existe -> true
+  print(usuarios.containsValue('Ana')); // false
+
+  Iterable<int> keysUsuarios = usuarios.keys; // Devuelve una vista de todas las claves
+  print(keysUsuarios); // (2, 3, 4, 5, 6)
+
+  Iterable<String> valuesUsuarios = usuarios.values; // Devuelve una vista de todos los valores
+  print(valuesUsuarios); // (Linux, Steve, Juan, Max, Orlando)
+
+  // Verifica si el Map está vacío o no:
+  print(usuarios.isEmpty); // false
+  print(usuarios.isNotEmpty); // true
+
+  // 	Devuelve la cantidad de pares clave-valor:
+  print(usuarios.length); // 5
+
+  usuarios.clear(); //	Elimina todos los elementos del mapa
+  print(usuarios); // {}
+}
 
 
 
