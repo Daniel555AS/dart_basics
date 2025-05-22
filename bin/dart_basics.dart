@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioSet2();
+  ejercicioMap2();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -429,4 +429,37 @@ void ejercicioMap() {
   */
   
   print('Total: $total'); // Total: 2
+}
+
+void ejercicioMap2() {
+  /*
+    Dado un Map<String, double> con nombres de estudiantes y sus notas finales, calcula el promedio 
+    general. También imprime quién tiene la nota más alta.
+
+    SALIDA ESPERADA:
+    Promedio general: 4.35  
+    Nota más alta: Pedro con 4.9
+  */
+
+  Map<String, double> notas = {
+  'Ana': 4.5,
+  'Luis': 3.8,
+  'Pedro': 4.9,
+  'María': 4.2,
+  };
+
+  MapEntry<String, double> notaEstudiante = notas.entries.first;
+  double notaMasAlta = notaEstudiante.value;
+  double sumaNotas = 0;
+
+  for(var nota in notas.entries) {
+    if(nota.value > notaMasAlta) {
+      notaMasAlta = nota.value;
+      notaEstudiante = nota;
+    }
+    sumaNotas += nota.value;
+  }
+
+  print('Promedio general: ${(sumaNotas / notas.length).toStringAsFixed(2)}');
+  print('Nota más alta: ${notaEstudiante.key} con ${notaEstudiante.value}');
 }
