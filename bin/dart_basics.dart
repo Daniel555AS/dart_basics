@@ -2,7 +2,9 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  estudioMaps();
+  listLoop();
+  setLoop();
+  mapLoop();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -219,5 +221,96 @@ void estudioMaps() {
   print(usuarios); // {}
 }
 
+void listLoop() {
+  print("============= listLoop =============");
 
+  List<int> numbers = [1, 2, 3, 4, 5, 6, 7];
+
+  for(int i = 0; i < numbers.length; i++) {
+    print(numbers[i]);
+  }
+
+  for (var element in numbers) {
+    if(element >= 4) {
+      print("$element es mayor o igual a 4");
+    } else {
+      print("$element es menor a 4");
+    }
+  }
+
+  print("USANDO forEach");
+  numbers.forEach((number){ // forEach
+        if(number >= 4) {
+      print("$number es mayor o igual a 4");
+    } else {
+      print("$number es menor a 4");
+    }
+  });
+
+  numbers.forEach(print); // forEach
+
+  // ==> While:
+  print("=> Usando Ciclo While:");
+  int jj = 0;
+
+  while(jj < numbers.length) {
+    print("- Valor en índice $jj => ${numbers[jj]}");
+    jj++;
+  }
+
+  // ==> do-while:
+  print("=> Usando Ciclo do-While:");
+  int kk = 0;
+
+  do{
+    print("- Valor en índice $kk => ${numbers[kk]}");
+    kk++;
+  } while(kk < numbers.length);
+}
+
+void setLoop() {
+  print("============= setLoop =============");
+
+  Set<int> numbers = {1, 2, 3, 4, 5, 6, 7};
+
+  for(var element in numbers) {
+    print("Iteración SET: $element");
+  }
+
+  print("USANDO forEach:");
+  numbers.forEach(print); // forEach
+}
+
+void mapLoop() {
+  print("============= mapLoop =============");
+
+  Map<String, int> numbers = {
+    'uno': 1,
+    'dos': 2,
+    'tres': 3,
+    'cuatro': 4,
+    'cinco': 5,
+    'seis': 6,
+    'siete': 7 
+  };
+
+  for(var element in numbers.entries) {
+    print("Clave: ${element.key} - Valor: ${element.value}");
+  }
+
+  // Para iterar únicamente sobre las claves:
+  for(var element in numbers.keys) {
+    print("CLAVE: $element");
+  }
+
+  // Para iterar únicamente sobre los valores:
+  for(var element in numbers.values) {
+    print("VALOR: $element");
+  }
+
+  print("USANDO forEach:");
+  numbers.forEach((clave, valor){ //forEach
+    print("CLAVE - VALOR USANDO forEach => $clave: $valor");
+  });
+}
 
