@@ -2,9 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  listLoop();
-  setLoop();
-  mapLoop();
+  ejercicioList();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -314,3 +312,20 @@ void mapLoop() {
   });
 }
 
+void ejercicioList() {
+  // Dada una lista de números enteros, imprime solo los números pares y calcula su suma total.
+
+  List<int> numeros = [3, 4, 7, 10, 12];
+  List<int> pares = [];
+  int sum = 0;
+
+  for(int numero in numeros) {
+    if(numero % 2 == 0) {
+      pares.add(numero);
+      sum += numero;
+    }
+  }
+
+  print("Resultado Suma: $sum"); // 26
+  print("Número Pares: $pares"); // [4, 10, 12]
+}
