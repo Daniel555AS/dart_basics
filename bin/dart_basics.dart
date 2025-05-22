@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioList();
+  ejercicioSet();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -328,4 +328,23 @@ void ejercicioList() {
 
   print("Resultado Suma: $sum"); // 26
   print("Número Pares: $pares"); // [4, 10, 12]
+}
+
+void ejercicioSet() {
+  // Dado un Set<String> con nombres, imprime solo los nombres que comienzan con una vocal. 
+  // Además, muestra cuántos cumplen esa condición.
+  Set<String> nombres = {'Ana', 'Luis', 'Esteban', 'Oscar', 'María'};
+  Set<String> nombresVocales = {};
+  String vocales = 'aeiou';
+  int cantidad = 0;
+
+  for(String nombre in nombres) {
+    String primeraLetra = nombre[0].toLowerCase();
+    if(vocales.contains(primeraLetra)) {
+      nombresVocales.add(nombre);
+      cantidad++;
+    }
+  }
+  print(nombresVocales); // {Ana, Esteban, Oscar}
+  print("Cantidad: $cantidad"); // 3
 }
