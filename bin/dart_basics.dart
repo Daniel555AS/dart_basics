@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioMap2();
+  ejercicioList3();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -361,6 +361,66 @@ void ejercicioList2() {
   print('* Positivos: $positivos');
   print('* Negativos: $negativos');
   print('* Ceros: $ceros');
+}
+
+void ejercicioList3() {
+  /*
+    Dada una lista de enteros, crea una nueva lista sin duplicados, ordenada de menor a mayor, y muestra:
+      - La lista original
+      - La lista sin duplicados
+      - El valor máximo y mínimo
+
+    SALIDA ESPERADA:
+    Original: [3, 6, 2, 6, 9, 2, 1]  
+    Sin duplicados: [1, 2, 3, 6, 9]  
+    Máximo: 9  
+    Mínimo: 1
+  */
+
+  List<int> numeros = [3, 6, 2, 6, 9, 2, 1];
+  List<int> numerosSinDuplicados = (numeros.toSet()).toList();
+  // numerosSinDuplicados.sort(); // Ordenar lista de números sin duplicados usando método sort()
+  List<int> numerosOrdenadosSinDuplicados = ordenarNumeros(numerosSinDuplicados);
+
+  print('Original: $numeros');
+  print('Sin duplicados: $numerosOrdenadosSinDuplicados');
+  print('Máximo: ${numerosOrdenadosSinDuplicados.last}');
+  print('Mínimo: ${numerosOrdenadosSinDuplicados.first}');
+}
+
+/* 
+  Algoritmo para ordenar listas de números
+*/
+List<int> ordenarNumeros(List<int> lista) {
+  if(lista.isEmpty || lista.length == 1) {
+    return lista;
+  }
+
+  bool cambio = false;
+  int index = 0; 
+  int numTemp = 0; 
+  
+  while(true) {
+    if(lista[index] > lista[index + 1]) {
+      numTemp = lista[index + 1];
+      lista[index + 1] = lista[index];
+      lista[index] = numTemp;
+      cambio = true;
+    }
+
+    if(index == lista.length - 2) {
+      if(!cambio) {
+        break;
+      }
+      
+      index = 0;
+      cambio = false; 
+    } else {
+      index++;
+    }
+  }
+
+  return lista;
 }
 
 void ejercicioSet() {
