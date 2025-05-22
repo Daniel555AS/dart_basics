@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioMap();
+  ejercicioList2();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -328,6 +328,39 @@ void ejercicioList() {
 
   print("Resultado Suma: $sum"); // 26
   print("Número Pares: $pares"); // [4, 10, 12]
+}
+
+void ejercicioList2() {
+  /*
+    Dada una lista de números enteros, cuenta cuántos son:
+      - Positivos
+      - Negativos
+      - Ceros
+
+    Salida Esperada:
+      * Positivos: 2  
+      * Negativos: 2  
+      * Ceros: 2
+  */
+
+  List<int> datos = [0, -5, 10, -3, 8, 0];
+  int positivos = 0;
+  int negativos = 0;
+  int ceros = 0;
+
+  for(var dato in datos) {
+    if(dato > 0) {
+      positivos++;
+    } else if(dato < 0) {
+      negativos++;
+    } else {
+      ceros++;
+    }
+  }
+
+  print('* Positivos: $positivos');
+  print('* Negativos: $negativos');
+  print('* Ceros: $ceros');
 }
 
 void ejercicioSet() {
