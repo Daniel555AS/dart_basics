@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioList2();
+  ejercicioSet2();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -382,6 +382,21 @@ void ejercicioSet() {
   }
   print(nombresVocales); // {Ana, Esteban, Oscar}
   print("Cantidad: $cantidad"); // 3
+}
+
+void ejercicioSet2() {
+  /*
+   Dada una lista de strings con nombres, determina si hay nombres duplicados (usando un Set).
+
+   Salida Esperada:
+   Hay duplicados: true
+  */
+
+  List<String> nombres = ['Ana', 'Luis', 'Ana', 'Pedro', 'Luis'];
+
+  Set<String> setNombres = Set.from(nombres);
+
+  print('Hay duplicados: ${nombres.length != setNombres.length}');
 }
 
 void ejercicioMap() {
