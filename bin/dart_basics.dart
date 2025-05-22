@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioSet();
+  ejercicioMap();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -331,8 +331,10 @@ void ejercicioList() {
 }
 
 void ejercicioSet() {
-  // Dado un Set<String> con nombres, imprime solo los nombres que comienzan con una vocal. 
-  // Además, muestra cuántos cumplen esa condición.
+  /*
+    Dado un Set<String> con nombres, imprime solo los nombres que comienzan con una vocal. 
+    Además, muestra cuántos cumplen esa condición.
+  */
   Set<String> nombres = {'Ana', 'Luis', 'Esteban', 'Oscar', 'María'};
   Set<String> nombresVocales = {};
   String vocales = 'aeiou';
@@ -347,4 +349,36 @@ void ejercicioSet() {
   }
   print(nombresVocales); // {Ana, Esteban, Oscar}
   print("Cantidad: $cantidad"); // 3
+}
+
+void ejercicioMap() {
+  /*
+    Dado un Map<String, int> que representa productos y sus precios, imprime solo los productos 
+    cuyo precio es mayor o igual a 100. También muestra el total de productos que cumplen la condición.
+  */
+
+  Map<String, int> productos = {
+  'Monitor': 150,
+  'Teclado': 80,
+  'Mouse': 50,
+  'Impresora': 200,
+  };
+
+  int total = 0;
+
+  print('Productos con precio >= 100:');
+  
+  for (var producto in productos.entries) {
+    if(producto.value >= 100) {
+      print('${producto.key}: ${producto.value}');
+      total++;
+    }
+  }
+
+  /*
+    Monitor: 150
+    Impresora: 200
+  */
+  
+  print('Total: $total'); // Total: 2
 }
