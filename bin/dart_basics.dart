@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioList3();
+  ejercicioMap3();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
@@ -412,7 +412,7 @@ List<int> ordenarNumeros(List<int> lista) {
       if(!cambio) {
         break;
       }
-      
+
       index = 0;
       cambio = false; 
     } else {
@@ -457,6 +457,28 @@ void ejercicioSet2() {
   Set<String> setNombres = Set.from(nombres);
 
   print('Hay duplicados: ${nombres.length != setNombres.length}');
+}
+
+void ejercicioSet3() {
+  /*
+  Tienes dos Set<String> que contienen nombres de personas que asistieron a dos eventos distintos. 
+  Muestra:
+    - Quiénes asistieron a ambos eventos (intersección)
+    - Quiénes asistieron solo al primero (diferencia)
+    - El total de personas únicas que asistieron a alguno de los dos eventos (unión)
+
+  SALIDA ESPERADA:
+  Ambos eventos: {Luis, Carlos}  
+  Solo primer evento: {Ana, María}  
+  Total únicos: {Ana, Luis, María, Carlos, Marta, Pedro}
+  */
+
+  Set<String> evento1 = {'Ana', 'Luis', 'María', 'Carlos'};
+  Set<String> evento2 = {'Luis', 'Carlos', 'Marta', 'Pedro'};
+
+  print('Ambos eventos: ${evento1.intersection(evento2)}');
+  print('Solor primer evento: ${evento1.difference(evento2)}');
+  print('Total únicos: ${evento1.union(evento2)}');
 }
 
 void ejercicioMap() {
@@ -522,4 +544,51 @@ void ejercicioMap2() {
 
   print('Promedio general: ${(sumaNotas / notas.length).toStringAsFixed(2)}');
   print('Nota más alta: ${notaEstudiante.key} con ${notaEstudiante.value}');
+}
+
+void ejercicioMap3() {
+  /*
+    Dado un Map<String, List<int>> que contiene estudiantes y sus notas, calcula:
+      - El promedio de cada estudiante
+      - Qué estudiantes tienen promedio superior a 4.0
+      - Cuál es el promedio general del grupo
+
+    SALIDA ESPERADA:
+      Ana: 4.33  
+      Luis: 3.33  
+      Pedro: 4.67  
+
+      Promedios > 4.0: [Ana, Pedro]  
+      Promedio general del grupo: 4.11
+  */
+
+  Map<String, List<int>> notas = {
+  'Ana': [4, 5, 4],
+  'Luis': [3, 3, 4],
+  'Pedro': [5, 5, 4],
+  };
+
+  double sum = 0;
+  double sumGeneral = 0;
+  Map<String, double> promedios = {};
+  List<String> estudiantesPromedioSuperior4 = [];
+
+  for (var element in notas.entries) {
+    sum = 0;
+    for(var calificacion in element.value) {
+      sum += calificacion;
+    }
+    promedios[element.key] = double.parse((sum / element.value.length).toStringAsFixed(2));
+  }
+
+  for(var promedio in promedios.entries){
+    sumGeneral += promedio.value;
+    if(promedio.value > 4) {
+      estudiantesPromedioSuperior4.add(promedio.key);
+    }
+    print('${promedio.key}: ${promedio.value}');
+  }
+
+  print('\nPromedios > 4.0: $estudiantesPromedioSuperior4');
+  print('Promedio general del grupo: ${sumGeneral / promedios.length}');
 }
