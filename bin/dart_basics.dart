@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'package:dart_basics/IceCream.dart';
 import 'package:dart_basics/dart_basics.dart' as dart_basics;
 
 void main(List<String> arguments) {
-  ejercicioMap3();
+  var strawberry = IceCream();
+  strawberry.flavor = "strawberry";
+  strawberry.charge();
 }
 
 void ejercicioCalculadoraEnvioPaquetes(double peso, {String tipoEnvio = 'normal', bool tieneSeguroAdicional = false}) {
